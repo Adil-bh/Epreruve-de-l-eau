@@ -1,29 +1,35 @@
 =begin
 	
-1* On compte de 0..999 au format %.3i (ex : 012)
-2* On décompose les 3 digits dans un tableau  (ex :[0, 1, 2])
-3* Si les digits sont croissants on insère numbers dans combinated_numbers
-
-Tip discord : Compter de 0 à 999. Triche ?
-Question : Peut-on supprimer la dernière virgule après 789, ?
+1* Tant que first_number <= 98 faire second_number + 1
+2* Si second_number = 99 => on incrémente first_number + 1 et on remet à zéro second_number
+3* Si la combinaison first_number second_number est croissante ajouter dans values_array
+	
+Question : Comment metter les entiers sous la forme 01 au lieu de 1
 =end
+values_array = []
+first_number = 0
+second_number = 0
 
-combinated_numbers = []
-
-def is_ascending?(a, b, c)
-	return true if a < b && b < c
+def isAscending?(a, b)
+	return true if a < b
 end
 
-for num in 0..999
-	numbers = "%.3i" % num  							#012
-	digit = numbers.chars.map(&:to_i)					#[0, 1, 2]
-	if is_ascending?(digit[0],digit[1],digit[2])	#Si digits croissant : numbers => combinated_numbers
-		combinated_numbers.insert(-1, numbers)
+while first_number <= 98
+	second_number += 1
+	if second_number > 99
+		first_number += 1
+		second_number = 0
+	elsif second_number > 99 && first_number == 98 #Pour éviter [99, 100]
+		break
 	end
-end
+	if isAscending?(first_number, second_number)
+		combinated_numbers = "#{first_number} #{second_number}"
+		values_array.insert(-1, combinated_numbers)
+	end
 
+end
 i = 0
-combinated_numbers.each do
-	print "#{combinated_numbers[i]}, "
-	i = i + 1
+values_array.each do
+	print "#{values_array[i]}, "
+	i += 1
 end
