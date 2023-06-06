@@ -12,7 +12,7 @@ def check_Numbers(count,array)
 	return false if count != array.length
 end
 
-if args.length != 1
+if args.length != 1 #Vérifier si certains caractères sont des caractères spéciaux ?
 	puts "error"
 else
 	sequence_of_chars.each do |char|
