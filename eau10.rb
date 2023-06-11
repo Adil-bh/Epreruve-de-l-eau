@@ -21,10 +21,10 @@ if check_arguments(args)
 	puts "error"
 else
 	args.pop() #On supprime le dernier mot du tableau pour pouvoir parser
-	if contains_wanted_word(wanted_word,args) != true
+	if contains_wanted_word(wanted_word,args) != true #On vérifie si le mot est bien dans le tableau des arguments
 		puts "-1"
-	elsif contains_wanted_word(wanted_word,args) == true
-		args.each do |word, index|
+	elsif contains_wanted_word(wanted_word,args) == true #Si oui on compare le mot cherché à chaque valeur dans le tableau
+		args.each do |word|
 			if word == wanted_word
 				wanted_word_index = word_count
 				break
