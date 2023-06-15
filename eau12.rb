@@ -16,9 +16,7 @@ def my_bubble_sort(array)
 	array.each do
 		for i in 0..array.length - 2
 			if array[i] > array[i+1]
-				temp_value = array[i]
-				array[i] = array[i+1]
-				array[i+1] = temp_value
+				array[i], array[i+1] = array[i+1], array[i]
 			end
 		end		
 	end
