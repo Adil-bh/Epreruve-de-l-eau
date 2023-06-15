@@ -11,8 +11,6 @@ end
 
 def my_bubble_sort(array)
 	array = array.map(&:to_i)
-	#Utilisation d'une variable temporaire pour la permutation des valeurs du tableau
-	temp_value = nil
 	array.each do
 		for i in 0..array.length - 2
 			if array[i] > array[i+1]
