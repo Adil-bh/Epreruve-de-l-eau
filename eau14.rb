@@ -39,9 +39,21 @@ def is_word_superior?(array1, array2)
 	end
 end
 
+def my_bubble_sort(array)
+	n = array.length
+	for i in 0..n - 2
+		min = array[i]
+		for j in i+1..n - 1
+			if is_word_superior?(array[i], array[j])
+				array[i], array[j] = array[j], array[i]
+			end
+		end	
+	end
+end
+
 #Partie 1 : Gestion d'erreur
-if ARGV.length == 0
-	puts "error : null arg"
+if ARGV.length <= 1
+	puts "error : need more arg"
 	exit
 end
 
@@ -61,17 +73,7 @@ ARGV.each do |word|
 end
 
 #Partie 3 : Résolution
-index_lettre = 0
-n = array_of_words.length
-for i in 0..n - 2
-	min = array_of_words[i]
-	for j in i+1..n - 1
-		if is_word_superior?(array_of_words[i], array_of_words[j])
-			array_of_words[i], array_of_words[j] = array_of_words[j], array_of_words[i]
-		end
-	end	
-
-end
+my_bubble_sort(array_of_words)
 
 #Partie 4 : Affichage
 array_of_words.each do |word|
