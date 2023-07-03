@@ -26,6 +26,19 @@ def contains_special_character?(argument)
 	end
 end
 
+def is_word_superior?(array1, array2)
+	index_letter = 0
+	while index_letter != array1.length || index_letter != array2.length
+		if array1[index_letter] < array2[index_letter]
+			return false
+		elsif array1[index_letter] > array2[index_letter]
+			return true
+		elsif array1[index_letter] == array2[index_letter]
+			index_letter += 1
+		end
+	end
+end
+
 #Partie 1 : Gestion d'erreur
 if ARGV.length == 0
 	puts "error : null arg"
@@ -39,40 +52,26 @@ ARGV.each do |argument|
 	end
 end
 
-
 #Partie 2 : Parsing
 array_of_words = []
-n = array_of_words.length
-
-
-#Partie 3 : Résolution
-
 ARGV.each do |word|
 	word = word.to_s.chars
 	word_ascii = set_chars_to_ascii(word)
 	array_of_words.insert(-1, word_ascii)
 end
 
-
+#Partie 3 : Résolution
+index_lettre = 0
 n = array_of_words.length
 for i in 0..n - 2
-	for j in 0..array_of_words[i].length - 1
-		if array_of_words[i+1][j] < array_of_words[i][j]
-			array_of_words[i], array_of_words[i+1] = array_of_words[i+1], array_of_words[i]
-			i += 1
-			break	
-	 	#elsif array_of_words[i+1][j] == array_of_words[i][j]
-	 	 #	j += 1
-		elsif i == n - 2 #Éviter de comparer le dernier argument car il n'y a pas de prochain mot/caractère
-			i += 1
-	 	 	break
-	 	else
- 			i += 1
- 		end
-	end
+	min = array_of_words[i]
+	for j in i+1..n - 1
+		if is_word_superior?(array_of_words[i], array_of_words[j])
+			array_of_words[i], array_of_words[j] = array_of_words[j], array_of_words[i]
+		end
+	end	
+
 end
-
-
 
 #Partie 4 : Affichage
 array_of_words.each do |word|
