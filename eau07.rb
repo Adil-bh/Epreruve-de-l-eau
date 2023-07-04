@@ -11,13 +11,7 @@
 	
 =end
 
-arg = ARGV
-sentence = ARGV[0]
-sentence_to_char = sentence.to_s.chars
-letter_count = 0
-space_bool = false
-output_sentence = []
-
+#Fonction utilisées
 def is_letter?(ascii)
 	return true if ascii.between?(65,90)
 	return true if ascii.between?(97,122)
@@ -42,27 +36,36 @@ def isFirstLetter?(count)
 	return false if count != 0
 end
 
-#print sentence_to_char
-
-if arg.length != 1 || sentence.to_s.count("0-9") > 0
+#Partie 1 : Gestion d'erreur
+sentence = ARGV[0]
+if ARGV.length != 1 || sentence.to_s.count("0-9") > 0
 	puts "error"
-else
-	sentence_to_char.each do |char|
-		letter_ascii = char.ord
-		if is_letter?(letter_ascii) && space_bool == true || isFirstLetter?(letter_count)
-			letter_ascii = set_letter_upper(letter_ascii)
-			output_sentence.insert(-1, letter_ascii)
-			space_bool = false
-		elsif letter_ascii == 32
-			output_sentence.insert(-1, letter_ascii)
-			space_bool = true	
-		elsif is_letter?(letter_ascii)
-			output_sentence.insert(-1, letter_ascii)
-		elsif !is_letter?(letter_ascii)
-			output_sentence.insert(-1, letter_ascii)
-		end
-		letter_count += 1
-	end
+	exit
 end
-#print output_sentence
+
+#Partie 2 : Parsing
+sentence_to_char = sentence.to_s.chars
+letter_count = 0
+space_bool = false
+output_sentence = []
+
+#Partie 3 : Résolution
+sentence_to_char.each do |char|
+	letter_ascii = char.ord
+	if is_letter?(letter_ascii) && space_bool == true || isFirstLetter?(letter_count)
+		letter_ascii = set_letter_upper(letter_ascii)
+		output_sentence.insert(-1, letter_ascii)
+		space_bool = false
+	elsif letter_ascii == 32
+		output_sentence.insert(-1, letter_ascii)
+		space_bool = true	
+	elsif is_letter?(letter_ascii)
+		output_sentence.insert(-1, letter_ascii)
+	elsif !is_letter?(letter_ascii)
+		output_sentence.insert(-1, letter_ascii)
+	end
+	letter_count += 1
+end
+
+#Partie 4 : Affichage
 print display_output(output_sentence)
