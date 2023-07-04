@@ -1,7 +1,4 @@
-arguments = ARGV
-full_word = arguments[0]
-word = arguments[1]
-
+#Fonction utilisées
 def containsWord?(full_word, word)
 	i = 3
 	j = 0
@@ -21,13 +18,20 @@ def containsWord?(full_word, word)
 	return true if letter_count == word.length
 end
 
-
+#Partie 1 : Gestion d'erreur
+#Partie 2 : Parsing
+arguments = ARGV
+full_word = arguments[0]
+word = arguments[1]
 if arguments.length != 2 || full_word.count("0-9") > 0 || word.count("0-9") > 0
 	puts "error"
+	exit
+end
+
+#Partie 3 : Résolution
+#Partie 4 : Affichage
+if containsWord?(full_word, word) == true
+	puts "True"
 else
-	if containsWord?(full_word, word) == true
-		puts "True"
-	else
-		puts "False"
-	end
+	puts "False"
 end
