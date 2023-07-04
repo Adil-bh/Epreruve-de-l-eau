@@ -1,5 +1,4 @@
-args = ARGV
-
+#Fonction utilisées
 def checkArguments(arguments)
 	arguments.each do |arg|
 		if arg.count("a-zA-Z") > 0
@@ -21,8 +20,16 @@ def my_bubble_sort(array)
 	return array
 end
 
-if checkArguments(args)
+#Partie 1 : Gestion d'erreur
+if checkArguments(ARGV)
 	puts "error"
-else
-	print my_bubble_sort(args)
+	exit
+end
+
+#Partie 3 : Résolution
+bubble_sort_array = my_bubble_sort(ARGV)
+
+#Partie 4 : Affichage
+bubble_sort_array.each do |number|
+	print "#{number} "
 end
