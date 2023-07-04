@@ -8,12 +8,21 @@ Tip discord : Compter de 0 à 999. Triche ?
 Question : Peut-on supprimer la dernière virgule après 789, ?
 =end
 
-combinated_numbers = []
-
+#Fonction utilisées
 def is_ascending?(a, b, c)
 	return true if a < b && b < c
 end
 
+#Partie 1 : Gestion d'erreur
+if ARGV.length != 0
+	puts "error. no need of arguments"
+	exit
+end
+
+#Partie 2 : Parsing
+combinated_numbers = []
+
+#Partie 3 : Résolution
 for num in 0..999
 	numbers = "%.3i" % num  							#012
 	digit = numbers.chars.map(&:to_i)					#[0, 1, 2]
@@ -22,6 +31,7 @@ for num in 0..999
 	end
 end
 
+#Partie 4 : Affichage
 i = 0
 combinated_numbers.each do
 	print "#{combinated_numbers[i]}, "
