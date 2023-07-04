@@ -1,5 +1,4 @@
-args = ARGV
-
+#Fonction utilisées
 def checkArguments(arguments)
 	arguments.each do |arg|
 		if arg.count("a-zA-Z") > 0
@@ -26,8 +25,16 @@ def my_select_sort(array)
 	return array
 end
 
-if checkArguments(args)
+#Partie 1 : Gestion d'erreur
+if checkArguments(ARGV)
 	puts "error"
-else
-	print my_select_sort(args)
+	exit
+end
+
+#Partie 3 : Résolution
+select_sort_array = my_select_sort(ARGV)
+
+#Partie 4 : Affichage
+select_sort_array.each do |number|
+	print "#{number} "
 end
