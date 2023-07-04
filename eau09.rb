@@ -1,8 +1,4 @@
-args = ARGV
-min = nil
-max = nil
-array_min_max = []
-
+#Fonction utilisées
 def check_arguments_error(arguments)
 	return true if arguments.length != 2 || arguments[0].to_s.count("a-zA-Z") > 0 || arguments[1].to_s.count("a-zA-Z") > 0
 end
@@ -19,17 +15,27 @@ def check_min_max(argument1,argument2)
 	end
 end
 
-if check_arguments_error(args)
+#Partie 1 : Gestion d'erreur
+if check_arguments_error(ARGV)
 	puts "error"
-else
-	array_min_max = check_min_max(args[0],args[1])
-	min = array_min_max[0].to_i
-	max = array_min_max[1].to_i
-	for num in 0..max
-		if num >= min && num < max
-			print "#{num} "
-		elsif num >= max
-			break
-		end
+	exit
+end
+
+#Partie 2 : Parsing
+min = nil
+max = nil
+array_min_max = []
+
+#Partie 3 : Résolution
+array_min_max = check_min_max(ARGV[0],ARGV[1])
+min = array_min_max[0].to_i
+max = array_min_max[1].to_i
+
+#Partie 4 : Affichage
+for num in 0..max
+	if num >= min && num < max
+		print "#{num} "
+	elsif num >= max
+		break
 	end
 end
