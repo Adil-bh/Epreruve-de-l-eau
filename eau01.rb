@@ -6,14 +6,24 @@
 	
 Question : Comment metter les entiers sous la forme 01 au lieu de 1
 =end
-values_array = []
-first_number = 0
-second_number = 0
 
+#Fonction utilisées
 def isAscending?(a, b)
 	return true if a < b
 end
 
+#Partie 1 : Gestion d'erreur
+if ARGV.length != 0
+	puts "error. no need of arguments"
+	exit
+end
+
+#Partie 2 : Parsing
+values_array = []
+first_number = 0
+second_number = 0
+
+#Partie 3 : Résolution
 while first_number <= 98
 	second_number += 1
 	if second_number > 99
@@ -26,7 +36,8 @@ while first_number <= 98
 		combinated_numbers = "#{first_number} #{second_number}"
 		values_array.insert(-1, combinated_numbers)
 	end
-
+	
+#Partie 4 : Affichage
 end
 i = 0
 values_array.each do
