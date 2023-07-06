@@ -1,21 +1,15 @@
 #Fonction utilisées
 def is_Number?(ascii)
-	return true if ascii.between?(48,57)
-	return false if !ascii.between?(48,57)
+	return ascii.between?(48,57) ? true : false
 end
 
 def check_Numbers(count,array)
-	return true if count == array.length
-	return false if count != array.length
+	return count == array.length ? true : false
 end
 
 def contains_special_character?(argument)
 	regex = /[!@#$%^&*(),.?":{}|<>]/
-	if argument =~ regex 
-		return true 
-	else 
-		return false
-	end
+	return argument =~ regex ? true : false
 end
 
 #Partie 1 : Gestion d'erreur
